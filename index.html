@@ -1,0 +1,39 @@
+<head>
+    <title>Parklet Locator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+    <meta property="og:title" content="Parklet Locator" />
+    <meta property="og:description" content="Find the perfect spot for your parklet" />
+    <meta property="og:url" content="http://parkletlocator.wearepossible.org" />
+    <meta property="og:image" content="http://www.duncangeere.com/spacedogs/spacedogs-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:type" content="text/html" />
+</head>
+
+<body>
+    <div id="header">
+        <img id='logo' src="logo.png">
+        <h1>Parklet Locator</h1>
+        <div id="intro">
+            <p>This is a prototype of the parklet locator map which people can use to find good places to put a parklet. It consists of a map with a number of data layers. Buttons allow you to switch between data layers. You can also search for a specific location.</p>
+            <p>Please replace this text before launch!</p>
+        </div>
+    </div>
+    <div id='main'>
+        <div id='buttons'>
+            <button>Public green space</button>
+            <button>Access to a private garden</button>
+            <button>Index of multiple deprivation</button>
+            <button>Cars per household</button>
+        </div>
+        <div id='map'>
+            <script src=map.js></script>
+        </div>
+    </div>
+</body>

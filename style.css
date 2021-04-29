@@ -1,0 +1,40 @@
+body {
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    align-content: center;
+    margin: 0px;
+}
+
+h1 {
+	color: #32b08c;
+	font-weight: 900;
+	font-size: 400%;
+	margin: 20px auto 30px auto;
+}
+
+p {
+	color: #321d49;
+	text-align: left;
+}
+
+#header {
+	margin: 30px auto 60px auto;
+	text-align: center;
+	max-width: 600px;
+}
+
+#buttons {
+	margin: 30px auto 60px auto;
+	text-align: center;
+}
+
+#map {
+	width: 90%;
+    max-width: 850px;
+	height: 600px;
+	margin: 30px auto 60px auto;
+}
+
+#logo {
+	width: 200px;
+}
