@@ -39,10 +39,10 @@
                 <button id='nearest-button' onclick="locApprove()">My location</button>
             </div>
             <div id='layerbuttons'>
-                <button>Public green space</button>
-                <button>Access to a private garden</button>
-                <button>Index of multiple deprivation</button>
-                <button>Cars per household</button>
+                <button onclick='layerChange("public_greenspace")'>Public green space</button>
+                <button onclick='layerChange("private_greenspace")'>Access to a private garden</button>
+                <button onclick='layerChange("imd")'>Index of multiple deprivation</button>
+                <button onclick='layerChange("carsperperson")'>Cars per household</button>
             </div>
         </div>
         <div id='map'>

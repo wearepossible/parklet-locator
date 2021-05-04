@@ -9,9 +9,10 @@ var map = new mapboxgl.Map({
     zoom: 9 // starting zoom
 });
 
-// Add navigation control
+// Add navigation controls on map
 map.addControl(new mapboxgl.NavigationControl());
 
+// Fly to different cities
 const gotoLondon = () => map.flyTo({center: [-0.12, 51.51], zoom: 11});
 const gotoBirmingham = () => map.flyTo({center: [-1.90, 52.48], zoom: 11});
 const gotoLeeds = () => map.flyTo({center: [-1.55, 53.80], zoom: 11});
@@ -36,3 +37,18 @@ const locApprove = () => {
         
     });
 };
+
+// Function to switch layers
+const layerChange = (chosenLayer) => {
+
+	const layers = ["public_greenspace", "private_greenspace", "imd", "carsperperson"]
+
+	// Turn off all layers
+	for (let layer of layers) {
+		map.setLayoutProperty(layer, 'visibility', 'none');
+	}
+
+	// Turn on the layer you want
+	map.setLayoutProperty(chosenLayer, 'visibility', 'visible');
+	
+}
