@@ -27,15 +27,16 @@
     </div>
     <div id='main'>
         <div id='buttons'>
-            <div id='locateme'>
-                <button>Locate me!</button>
+            <div id='loadinggif'>
+                <img id='nearest-loading' src="loader.gif">
             </div>
             <div id='locationbuttons'>
                 Zoom to:
-                <button>London</button>
-                <button>Birmingham</button>
-                <button>Leeds</button>
-                <button>Bristol</button>
+                <button onclick="gotoLondon()">London</button>
+                <button onclick="gotoBirmingham()">Birmingham</button>
+                <button onclick="gotoLeeds()">Leeds</button>
+                <button onclick="gotoBristol()">Bristol</button>
+                <button id='nearest-button' onclick="locApprove()">My location</button>
             </div>
             <div id='layerbuttons'>
                 <button>Public green space</button>

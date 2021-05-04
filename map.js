@@ -5,20 +5,34 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoid2VhcmVwb3NzaWJsZSIsImEiOiJja2tncjNkdGMxODJ3M
 var map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/wearepossible/ckmx9appa0lw117n2trmek7bq', // style URL
-    center: [-0.12, 51.5], // starting position [lng, lat]
-    zoom: 12 // starting zoom
+    center: [-0.12, 51.51], // starting position [lng, lat]
+    zoom: 9 // starting zoom
 });
 
 // Add navigation control
 map.addControl(new mapboxgl.NavigationControl());
 
-// Add geolocator
-// Add geolocate control to the map.
-map.addControl(
-    new mapboxgl.GeolocateControl({
-        positionOptions: {
-            enableHighAccuracy: true
-        },
-        trackUserLocation: true
-    })
-);
+const gotoLondon = () => map.flyTo({center: [-0.12, 51.51], zoom: 11});
+const gotoBirmingham = () => map.flyTo({center: [-1.90, 52.48], zoom: 11});
+const gotoLeeds = () => map.flyTo({center: [-1.55, 53.80], zoom: 11});
+const gotoBristol = () => map.flyTo({center: [-2.59, 51.45], zoom: 11});
+
+// Create a function that executes when the button is clicked
+const locApprove = () => {
+
+    // Display a loading gif
+    document.getElementById("nearest-loading").style.display = 'inline';
+
+    // Get the user's actual latitude and longitude
+    navigator.geolocation.getCurrentPosition(function (position, html5Error) {
+        const userLat = position.coords.latitude;
+        const userLon = position.coords.longitude;
+
+        // Hide the loading gif again once loaded
+        document.getElementById("nearest-loading").style.display = 'none';
+
+        // Move the world map to your location
+        map.flyTo({center: [userLon, userLat], zoom: 15});
+        
+    });
+};
