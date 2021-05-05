@@ -13,7 +13,7 @@ var map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl());
 
 // Fly to different cities
-const gotoLondon = () => map.flyTo({center: [-0.12, 51.51], zoom: 11});
+const gotoLondon = () => map.flyTo({center: [-0.12, 51.51], zoom: 9});
 const gotoBirmingham = () => map.flyTo({center: [-1.90, 52.48], zoom: 11});
 const gotoLeeds = () => map.flyTo({center: [-1.55, 53.80], zoom: 11});
 const gotoBristol = () => map.flyTo({center: [-2.59, 51.45], zoom: 11});
@@ -46,9 +46,11 @@ const layerChange = (chosenLayer) => {
 	// Turn off all layers
 	for (let layer of layers) {
 		map.setLayoutProperty(layer, 'visibility', 'none');
+		document.getElementById(layer).style.display = "none";
 	}
 
 	// Turn on the layer you want
 	map.setLayoutProperty(chosenLayer, 'visibility', 'visible');
+	document.getElementById(chosenLayer).style.display = "block";
 	
 }

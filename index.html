@@ -36,20 +36,23 @@
                 <button onclick="gotoBirmingham()">Birmingham</button>
                 <button onclick="gotoLeeds()">Leeds</button>
                 <button onclick="gotoBristol()">Bristol</button>
-                <button id='nearest-button' onclick="locApprove()">My location</button>
+                <button id='nearest-button' onclick="locApprove()">My Location 📍</button>
             </div>
             <div id='layerbuttons'>
-                <button onclick='layerChange("public_greenspace")'>Public green space</button>
-                <button onclick='layerChange("private_greenspace")'>Access to a private garden</button>
-                <button onclick='layerChange("imd")'>Index of multiple deprivation</button>
-                <button onclick='layerChange("carsperperson")'>Cars per household</button>
+                <button onclick='layerChange("public_greenspace")'>Public Green Space</button>
+                <button onclick='layerChange("private_greenspace")'>Access to Private Green Space</button>
+                <button onclick='layerChange("imd")'>Index of Multiple Deprivation</button>
+                <button onclick='layerChange("carsperperson")'>Cars per Household</button>
             </div>
+        </div>
+        <div id='legend'>
+            <img class='fade-in-image' id='public_greenspace' src="public_greenspace.svg" style='display: block'>
+            <img class='fade-in-image' id='private_greenspace' src="private_greenspace.svg">
+            <img class='fade-in-image' id='imd' src="imd.svg">
+            <img class='fade-in-image' id='carsperperson' src="carsperperson.svg">
         </div>
         <div id='map'>
             <script src=map.js></script>
-        </div>
-        <div id='legend'>
-            Legend goes here.
         </div>
     </div>
 </body>
