@@ -6,14 +6,14 @@ var map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/wearepossible/ckmx9appa0lw117n2trmek7bq', // style URL
     center: [-0.12, 51.51], // starting position [lng, lat]
-    zoom: 9 // starting zoom
+    zoom: 10 // starting zoom
 });
 
 // Add navigation controls on map
 map.addControl(new mapboxgl.NavigationControl());
 
 // Fly to different cities
-const gotoLondon = () => map.flyTo({center: [-0.12, 51.51], zoom: 9});
+const gotoLondon = () => map.flyTo({center: [-0.12, 51.51], zoom: 10});
 const gotoBirmingham = () => map.flyTo({center: [-1.90, 52.48], zoom: 11});
 const gotoLeeds = () => map.flyTo({center: [-1.55, 53.80], zoom: 11});
 const gotoBristol = () => map.flyTo({center: [-2.59, 51.45], zoom: 11});
