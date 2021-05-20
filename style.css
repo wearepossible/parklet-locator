@@ -11,6 +11,7 @@ h1 {
     font-weight: 900;
     font-size: 400%;
     margin: 20px auto 30px auto;
+    line-height: 100%;
 }
 
 p {
@@ -25,6 +26,13 @@ p {
 
 #logo {
     width: 200px;
+}
+
+#intro {
+    margin: 30px auto 10px auto;
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
 }
 
 #buttons * {
@@ -45,30 +53,44 @@ p {
     display: none;
 }
 
-#map {
-    width: 90%;
-    max-width: 850px;
-    height: 600px;
-    margin: 30px auto 60px auto;
-}
-
 #legend {
     width: 90%;
     max-width: 300px;
     height: auto;
-    margin: 10px auto 10px auto;
+    margin: 10px auto 0px auto;
+    text-align: center;
 }
 
 #legend img {
     width: 100%;
     height: auto;
     display: none;
+    padding: 10px 0px;
+}
+
+#map {
+    width: 90%;
+    max-width: 850px;
+    height: 600px;
+    margin: 10px auto 2px auto;
+}
+
+#tip {
+    width: 90%;
+    max-width: 850px;
+    margin: 0px auto 60px auto;
+}
+
+#tip p {
+    text-align: center;
+    font-size: 80%;
 }
 
 #methodology {
     margin: 30px auto 100px auto;
     text-align: center;
     max-width: 600px;
+    width: 90%;
 }
 
 #footer {
@@ -80,7 +102,7 @@ p {
     position: relative;
 }
 
-#footer p {
+#footer nav {
     margin: 0;
     position: absolute;
     top: 50%;
@@ -90,12 +112,36 @@ p {
     text-align: center;
 }
 
+#footer nav a {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0 10px; 
+}
+
 .fade-in-image {
     animation: fadeIn 0.5s;
     -webkit-animation: fadeIn 0.5s;
     -moz-animation: fadeIn 0.5s;
     -o-animation: fadeIn 0.5s;
     -ms-animation: fadeIn 0.5s;
+}
+
+.btn {
+  color: #ffffff;
+  background: #BF0978;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  font-size: 100%;
+  font-weight: 600;
+  border: none;
+}
+
+#btn-public_greenspace {
+  color: #BF0978;
+  background: #ffffff;
+  text-decoration: none;
+  outline: 2px solid #BF0978;
 }
 
 @keyframes fadeIn {
@@ -147,3 +193,4 @@ p {
         opacity: 1;
     }
 }
+

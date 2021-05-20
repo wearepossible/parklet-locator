@@ -47,10 +47,16 @@ const layerChange = (chosenLayer) => {
 	for (let layer of layers) {
 		map.setLayoutProperty(layer, 'visibility', 'none');
 		document.getElementById(layer).style.display = "none";
+        document.getElementById(`btn-${layer}`).style.background = "#BF0978";
+        document.getElementById(`btn-${layer}`).style.color = "#ffffff";
+        document.getElementById(`btn-${layer}`).style.outline = "none";
 	}
 
 	// Turn on the layer you want
 	map.setLayoutProperty(chosenLayer, 'visibility', 'visible');
 	document.getElementById(chosenLayer).style.display = "block";
+    document.getElementById(`btn-${chosenLayer}`).style.background = "#ffffff";
+    document.getElementById(`btn-${chosenLayer}`).style.color = "#BF0978";
+    document.getElementById(`btn-${chosenLayer}`).style.outline = "2px solid #BF0978";
 	
 }
