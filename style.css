@@ -18,6 +18,11 @@ p {
     text-align: left;
 }
 
+a {
+    color: #BF0978;
+    text-decoration: none;
+}
+
 #header {
     margin: 30px auto 20px auto;
     text-align: center;
