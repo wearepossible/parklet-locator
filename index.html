@@ -32,7 +32,7 @@
             </div>
             <div id='locationbuttons'>
                 Zoom to:
-                <br/>
+                <br />
                 <button class="btn" onclick="gotoLondon()">London</button>
                 <button class="btn" onclick="gotoBirmingham()">Birmingham</button>
                 <button class="btn" onclick="gotoLeeds()">Leeds</button>
@@ -41,17 +41,17 @@
             </div>
             <div id='layerbuttons'>
                 Select a layer:
-                <br/>
+                <br />
                 <button class="btn" id='btn-public_greenspace' onclick='layerChange("public_greenspace")'>Public Green Space</button>
-                <button class="btn" id='btn-private_greenspace' onclick='layerChange("private_greenspace")'>Access to Private Green Space</button>
-                <br/>
+                <button class="btn" id='btn-private_greenspace' onclick='layerChange("private_greenspace")'>Access to Green Space</button>
+                <br />
                 <button class="btn" id='btn-imd' onclick='layerChange("imd")'>Index of Multiple Deprivation</button>
                 <button class="btn" id='btn-carsperperson' onclick='layerChange("carsperperson")'>Cars per Household</button>
             </div>
         </div>
         <div id='legend'>
             Legend:
-            <br/>
+            <br />
             <img class='fade-in-image' id='public_greenspace' src="public_greenspace.svg" style='display: block'>
             <img class='fade-in-image' id='private_greenspace' src="private_greenspace.svg">
             <img class='fade-in-image' id='imd' src="imd.svg">
@@ -65,7 +65,10 @@
         </div>
         <div id='methodology'>
             <h3>Sources and Methodology</h3>
-            <p>Some notes will go here on data sources, methodology, etc. Not sure exactly how much detail we'll want to include here, but probably worth doing a bit.</p>
+            <p><strong>Public Green Space</strong> data comes from the <a href="https://www.ordnancesurvey.co.uk/business-government/products/open-map-greenspace">Ordnance Survey Open Green Space dataset</a> (April 2021), with golf courses, allotments, and other semi-private green space removed.</p>
+            <p><strong>Access to Green Space</strong> data comes from the <a href="https://www.ons.gov.uk/economy/environmentalaccounts/datasets/accesstogardensandpublicgreenspaceingreatbritain">Office for National Statistics "Access to gardens and public green space" dataset</a> (April 2020).</p>
+            <p><strong>Index of Multiple Deprivation</strong> data comes from the <a href="https://data.cdrc.ac.uk/dataset/index-multiple-deprivation-imd">Consumer Data Research Centre's IMD dataset</a> (2019), showing relative deprivation across the country in deciles.</p>
+            <p><strong>Cars Per Household</strong> data comes from the <a href="https://www.ordnancesurvey.co.uk/business-government/products/open-map-greenspace">Department for Transport's VEH0104 dataset</a> (Dec 2020), which consists of licensed vehicles by body type and region, including per head of population.</p>
         </div>
     </div>
     <div id='footer'>
