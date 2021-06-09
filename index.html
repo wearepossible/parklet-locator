@@ -21,60 +21,85 @@
         <a href="http://wearepossible.org"><img id='logo' src="logo.png"></a>
         <h1>Parklet Plotter</h1>
         <div id="intro">
-            <p>Green space, and access to it, has never been more important. Being outside in nature fosters happiness and social connection, can improve our health and wellbeing, and green spaces themselves help clean our air and cool us down. But not everyone has the same access to adequate green space.</p>
-            <p>Parklets are a great way to transform our streets and help bridge the gap of green space deprivation. A parklet is an old parking space that has been transformed into something for people to enjoy. They are great for bringing communities together, and providing some much-needed local green space.</p>
-            <p>Use this map to look at where you live, and see where access to green space is low. Where could parklets be installed to help close the green space gap and give streets back to people and nature?</p>
-            <p>The buttons below will allow you to jump to specific cities, as well as switch between seeing public green space, access to public and private green space, deprivation levels, and car ownership per household.</p>
-            <p>Once you've decided on the perfect parklet location, why not try designing a parklet to put there? Check out our <a href="http://www.wearepossible.org">Design Your Own Parklet tool</a>.</p>
+            <p>Use this map to find a spot you think would be ideal for a new parklet. We’ve created it to help
+                people learn more about the areas they live in - from which communities have the least access to green
+                space to how different areas measure up against the multiple deprivation index. Where could parklets be
+                installed to best help improve access to green space and give streets back to people and nature?</p>
+            <p>The buttons below allow you to jump to specific cities, as well as switch between seeing public green
+                space, access to public and private green space, deprivation levels, and car ownership per household.
+            </p>
+            <p>Picked the perfect location? Great - now, design a parklet to put there. <a
+                    href="http://www.wearepossible.org">Check out our ‘design your own parklet’ tool.</a></p>
         </div>
     </div>
     <div id='main'>
-        <div id='buttons'>
-            <div id='loadinggif'>
-                <img id='nearest-loading' src="loader.gif">
+        <div id='background'>
+            <div id='buttons'>
+                <div id='loadinggif'>
+                    <img id='nearest-loading' src="loader.gif">
+                </div>
+                <div id='locationbuttons'>
+                    Zoom to:
+                    <br />
+                    <button class="btn" onclick="gotoLondon()">London</button>
+                    <button class="btn" onclick="gotoBirmingham()">Birmingham</button>
+                    <button class="btn" onclick="gotoLeeds()">Leeds</button>
+                    <button class="btn" onclick="gotoBristol()">Bristol</button>
+                    <button class="btn" id='nearest-button' onclick="locApprove()">My Location</span></button>
+                </div>
+                <div id='layerbuttons'>
+                    Select a layer:
+                    <br />
+                    <button class="btn" id='btn-public_greenspace' onclick='layerChange("public_greenspace")'>Public
+                        Green Space</button>
+                    <button class="btn" id='btn-private_greenspace' onclick='layerChange("private_greenspace")'>Access
+                        to Green Space</button>
+                    <br />
+                    <button class="btn" id='btn-imd' onclick='layerChange("imd")'>Index of Multiple Deprivation</button>
+                    <button class="btn" id='btn-carsperperson' onclick='layerChange("carsperperson")'>Cars per
+                        Household</button>
+                </div>
             </div>
-            <div id='locationbuttons'>
-                Zoom to:
+            <div id='legend'>
+                Legend:
                 <br />
-                <button class="btn" onclick="gotoLondon()">London</button>
-                <button class="btn" onclick="gotoBirmingham()">Birmingham</button>
-                <button class="btn" onclick="gotoLeeds()">Leeds</button>
-                <button class="btn" onclick="gotoBristol()">Bristol</button>
-                <button class="btn" id='nearest-button' onclick="locApprove()">My Location</span></button>
+                <img class='fade-in-image' id='public_greenspace' src="public_greenspace.svg" style='display: block'>
+                <img class='fade-in-image' id='private_greenspace' src="private_greenspace.svg">
+                <img class='fade-in-image' id='imd' src="imd.svg">
+                <img class='fade-in-image' id='carsperperson' src="carsperperson.svg">
             </div>
-            <div id='layerbuttons'>
-                Select a layer:
-                <br />
-                <button class="btn" id='btn-public_greenspace' onclick='layerChange("public_greenspace")'>Public Green Space</button>
-                <button class="btn" id='btn-private_greenspace' onclick='layerChange("private_greenspace")'>Access to Green Space</button>
-                <br />
-                <button class="btn" id='btn-imd' onclick='layerChange("imd")'>Index of Multiple Deprivation</button>
-                <button class="btn" id='btn-carsperperson' onclick='layerChange("carsperperson")'>Cars per Household</button>
+            <div id='map'>
+                <script src=map.js></script>
             </div>
-        </div>
-        <div id='legend'>
-            Legend:
-            <br />
-            <img class='fade-in-image' id='public_greenspace' src="public_greenspace.svg" style='display: block'>
-            <img class='fade-in-image' id='private_greenspace' src="private_greenspace.svg">
-            <img class='fade-in-image' id='imd' src="imd.svg">
-            <img class='fade-in-image' id='carsperperson' src="carsperperson.svg">
-        </div>
-        <div id='map'>
-            <script src=map.js></script>
-        </div>
-        <div id='tip'>
-            <p>Tip: If you can't see any data then zoom in.</p>
+            <div id='tip'>
+                <p>Tip: If you can't see any data then zoom in.</p>
+            </div>
         </div>
         <div id='methodology'>
             <h3>Sources and Methodology</h3>
-            <p><strong>Public Green Space</strong> data comes from the <a href="https://www.ordnancesurvey.co.uk/business-government/products/open-map-greenspace">Ordnance Survey Open Green Space dataset</a> (April 2021), with golf courses, allotments, and other semi-private green space removed.</p>
-            <p><strong>Access to Green Space</strong> data comes from the <a href="https://www.ons.gov.uk/economy/environmentalaccounts/datasets/accesstogardensandpublicgreenspaceingreatbritain">Office for National Statistics "Access to gardens and public green space" dataset</a> (April 2020).</p>
-            <p><strong>Index of Multiple Deprivation</strong> data comes from the <a href="https://data.cdrc.ac.uk/dataset/index-multiple-deprivation-imd">Consumer Data Research Centre's IMD dataset</a> (2019), showing relative deprivation across the country in deciles.</p>
-            <p><strong>Cars Per Household</strong> data comes from the <a href="https://www.ordnancesurvey.co.uk/business-government/products/open-map-greenspace">Department for Transport's VEH0104 dataset</a> (Dec 2020), which consists of licensed vehicles by body type and region, including per head of population.</p>
+            <p><strong>Public Green Space</strong> data comes from the <a
+                    href="https://www.ordnancesurvey.co.uk/business-government/products/open-map-greenspace">Ordnance
+                    Survey Open Green Space dataset</a> (April 2021), with golf courses, allotments, and other
+                semi-private green space removed.</p>
+            <p><strong>Access to Green Space</strong> data comes from the <a
+                    href="https://www.ons.gov.uk/economy/environmentalaccounts/datasets/accesstogardensandpublicgreenspaceingreatbritain">Office
+                    for National Statistics "Access to gardens and public green space" dataset</a> (April 2020).</p>
+            <p><strong>Index of Multiple Deprivation</strong> data comes from the <a
+                    href="https://data.cdrc.ac.uk/dataset/index-multiple-deprivation-imd">Consumer Data Research
+                    Centre's IMD dataset</a> (2019), showing relative deprivation across the country in deciles.</p>
+            <p><strong>Cars Per Household</strong> data comes from the <a
+                    href="https://www.ordnancesurvey.co.uk/business-government/products/open-map-greenspace">Department
+                    for Transport's VEH0104 dataset</a> (Dec 2020), which consists of licensed vehicles by body type and
+                region, including per head of population.</p>
+                <p>For more questions, email <a href="mailto:hello@wearepossible.org">hello@wearepossible.org</a></p>
         </div>
     </div>
     <div id='footer'>
-        <nav aria-label="Footer" class="Footer-nav" data-content-field="navigation"><a class="Footer-nav-item" href="https://wearepossible.org/careers">Careers</a><a class="Footer-nav-item" href="https://www.wearepossible.org/contact">Contact</a><a class="Footer-nav-item" href="https://www.wearepossible.org/findstuff">Search</a><a class="Footer-nav-item" href="https://www.wearepossible.org/media">Media</a><a class="Footer-nav-item" href="https://www.wearepossible.org/legalcookies">Legal/Cookies</a></nav>
+        <nav aria-label="Footer" class="Footer-nav" data-content-field="navigation"><a class="Footer-nav-item"
+                href="https://wearepossible.org/careers">Careers</a><a class="Footer-nav-item"
+                href="https://www.wearepossible.org/contact">Contact</a><a class="Footer-nav-item"
+                href="https://www.wearepossible.org/findstuff">Search</a><a class="Footer-nav-item"
+                href="https://www.wearepossible.org/media">Media</a><a class="Footer-nav-item"
+                href="https://www.wearepossible.org/legalcookies">Legal/Cookies</a></nav>
     </div>
 </body>
