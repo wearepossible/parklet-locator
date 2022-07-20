@@ -66,7 +66,22 @@ const draw = new MapboxDraw(
     {
         defaultMode: "draw_point",
         displayControlsDefault: false,
-        controls: { point: true }
+        controls: { point: true },
+        styles: [
+            {
+                'id': 'highlight-points',
+                'type': 'circle',
+                'filter': ['all',
+                    ['==', '$type', 'Point'],
+                    ['==', 'meta', 'feature']],
+                'paint': {
+                    'circle-radius': 10,
+                    'circle-color': '#32B08C',
+                    'circle-stroke-color': 'white',
+                    'circle-stroke-width': 2,
+                    'circle-opacity': 0.5
+                }
+            }]
     });
 map.addControl(draw);
 
