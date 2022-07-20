@@ -71,3 +71,30 @@ const draw = new MapboxDraw(
 map.addControl(draw);
 
 // Create variables to hold the details of the location
+let locID, loc;
+
+// Set an initial point location when map loads?
+map.on('load', function () {
+    // Do nothing yeah
+});
+
+// On-click functionality
+map.on('click', function (e) {
+
+    // Log location of click
+    console.log(e);
+
+    // Get rid of all previously drawn points
+    draw.deleteAll();
+
+    // Define a new point
+    loc = draw.add({
+        id: locID,
+        type: 'Feature',
+        properties: {},
+        geometry: { type: 'Point', coordinates: [e.lngLat.lng, e.lngLat.lat] }
+    });
+
+    // Log its ID
+    locID = loc[0];
+});
