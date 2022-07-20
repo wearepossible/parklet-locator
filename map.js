@@ -112,4 +112,10 @@ map.on('click', function (e) {
 
     // Log its ID
     locID = loc[0];
+
+    // Show details of new point
+    console.log(draw.get(locID));
+
+    // Zoom to location
+    map.flyTo({ center: [e.lngLat.lng, e.lngLat.lat], zoom: 16 });
 });
