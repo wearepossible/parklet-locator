@@ -66,7 +66,6 @@ const draw = new MapboxDraw(
     {
         defaultMode: "draw_point",
         displayControlsDefault: false,
-        controls: { point: true },
         styles: [
             {
                 'id': 'highlight-points',
@@ -88,16 +87,11 @@ map.addControl(draw);
 // Create variables to hold the details of the location
 let locID, loc;
 
-// Set an initial point location when map loads?
-map.on('load', function () {
-    // Do nothing yeah
-});
-
-// On-click functionality
+// Click to place a parklet
 map.on('click', function (e) {
 
     // Log location of click
-    console.log(e);
+    //console.log(e);
 
     // Get rid of all previously drawn points
     draw.deleteAll();
@@ -113,8 +107,8 @@ map.on('click', function (e) {
     // Log its ID
     locID = loc[0];
 
-    // Show details of new point
-    console.log(draw.get(locID));
+    // Log details of new point
+    //console.log(draw.get(locID));
 
     // Zoom to location
     map.flyTo({ center: [e.lngLat.lng, e.lngLat.lat], zoom: 16 });
