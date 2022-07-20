@@ -58,5 +58,16 @@ const layerChange = (chosenLayer) => {
     document.getElementById(`btn-${chosenLayer}`).style.background = "#ffffff";
     document.getElementById(`btn-${chosenLayer}`).style.color = "#BF0978";
     document.getElementById(`btn-${chosenLayer}`).style.outline = "2px solid #BF0978";
-	
+
 }
+
+// Setup Mapbox Draw
+const draw = new MapboxDraw(
+    {
+        defaultMode: "draw_point",
+        displayControlsDefault: false,
+        controls: { point: true }
+    });
+map.addControl(draw);
+
+// Create variables to hold the details of the location
