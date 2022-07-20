@@ -13,10 +13,10 @@ var map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl());
 
 // Fly to different cities
-const gotoLondon = () => map.flyTo({center: [-0.12, 51.51], zoom: 10});
-const gotoBirmingham = () => map.flyTo({center: [-1.90, 52.48], zoom: 11});
-const gotoLeeds = () => map.flyTo({center: [-1.55, 53.80], zoom: 11});
-const gotoBristol = () => map.flyTo({center: [-2.59, 51.45], zoom: 11});
+const gotoLondon = () => map.flyTo({ center: [-0.12, 51.51], zoom: 10 });
+const gotoBirmingham = () => map.flyTo({ center: [-1.90, 52.48], zoom: 11 });
+const gotoLeeds = () => map.flyTo({ center: [-1.55, 53.80], zoom: 11 });
+const gotoBristol = () => map.flyTo({ center: [-2.59, 51.45], zoom: 11 });
 
 // Create a function that executes when the button is clicked
 const locApprove = () => {
@@ -33,28 +33,28 @@ const locApprove = () => {
         document.getElementById("nearest-loading").style.display = 'none';
 
         // Move the world map to your location
-        map.flyTo({center: [userLon, userLat], zoom: 15});
-        
+        map.flyTo({ center: [userLon, userLat], zoom: 15 });
+
     });
 };
 
 // Function to switch layers
 const layerChange = (chosenLayer) => {
 
-	const layers = ["public_greenspace", "private_greenspace", "imd", "carsperperson"]
+    const layers = ["public_greenspace", "private_greenspace", "imd", "carsperperson"]
 
-	// Turn off all layers
-	for (let layer of layers) {
-		map.setLayoutProperty(layer, 'visibility', 'none');
-		document.getElementById(layer).style.display = "none";
+    // Turn off all layers
+    for (let layer of layers) {
+        map.setLayoutProperty(layer, 'visibility', 'none');
+        document.getElementById(layer).style.display = "none";
         document.getElementById(`btn-${layer}`).style.background = "#BF0978";
         document.getElementById(`btn-${layer}`).style.color = "#ffffff";
         document.getElementById(`btn-${layer}`).style.outline = "none";
-	}
+    }
 
-	// Turn on the layer you want
-	map.setLayoutProperty(chosenLayer, 'visibility', 'visible');
-	document.getElementById(chosenLayer).style.display = "block";
+    // Turn on the layer you want
+    map.setLayoutProperty(chosenLayer, 'visibility', 'visible');
+    document.getElementById(chosenLayer).style.display = "block";
     document.getElementById(`btn-${chosenLayer}`).style.background = "#ffffff";
     document.getElementById(`btn-${chosenLayer}`).style.color = "#BF0978";
     document.getElementById(`btn-${chosenLayer}`).style.outline = "2px solid #BF0978";
