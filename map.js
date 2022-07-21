@@ -85,13 +85,15 @@ const draw = new MapboxDraw(
 map.addControl(draw);
 
 // Create variables to hold the details of the location
-let locID, loc;
+let locID, loc, locLat, locLng;
 
 // Click to place a parklet
 map.on('click', function (e) {
 
-    // Log location of click
+    // Save location of click
     //console.log(e);
+    locLat = e.lngLat.lat;
+    locLng = e.lngLat.lng;
 
     // Get rid of all previously drawn points
     draw.deleteAll();
@@ -101,7 +103,7 @@ map.on('click', function (e) {
         id: locID,
         type: 'Feature',
         properties: {},
-        geometry: { type: 'Point', coordinates: [e.lngLat.lng, e.lngLat.lat] }
+        geometry: { type: 'Point', coordinates: [locLng, locLat] }
     });
 
     // Log its ID
@@ -111,5 +113,22 @@ map.on('click', function (e) {
     //console.log(draw.get(locID));
 
     // Zoom to location
-    map.flyTo({ center: [e.lngLat.lng, e.lngLat.lat], zoom: 16 });
+    map.flyTo({ center: [locLng, locLat], zoom: 16 });
 });
+
+function submit() {
+
+    const pointData = {
+        datetime: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+        lat: locLat,
+        lng: locLng
+    }
+
+    if (pointData.lat && pointData.lng) {
+        SheetDB.write('https://sheetdb.io/api/v1/m6npscfti1l0q', { sheet: 'parklets', data: pointData }).then(function (result) {
+            console.log(result);
+        }, function (error) {
+            console.log(error);
+        });
+    }
+}
