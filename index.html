@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet">
     <script src="https://sheetdb.io/api/js"></script>
+    <script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.3.0/mapbox-gl-draw.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
@@ -88,7 +90,7 @@
             </div>
             <div id='tip'>
                 <p>Tip: If you can't see any data then zoom in.</p>
-                <button class="btn" id='btn-submit' onclick='submit()'>Submit Your Parklet</button>
+                <button class="btn" id='btn-submit' onclick='submit()'>Submit Your Parklet To Our Database</button>
             </div>
         </div>
         <div id='methodology'>

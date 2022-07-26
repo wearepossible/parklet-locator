@@ -91,7 +91,6 @@ let locID, loc, locLat, locLng;
 map.on('click', function (e) {
 
     // Save location of click
-    //console.log(e);
     locLat = e.lngLat.lat;
     locLng = e.lngLat.lng;
 
@@ -106,29 +105,75 @@ map.on('click', function (e) {
         geometry: { type: 'Point', coordinates: [locLng, locLat] }
     });
 
-    // Log its ID
+    // Save its ID
     locID = loc[0];
-
-    // Log details of new point
-    //console.log(draw.get(locID));
 
     // Zoom to location
     map.flyTo({ center: [locLng, locLat], zoom: 16 });
 });
 
+// This function runs when the button is clicked
 function submit() {
 
+    // Save timestamp and lat/lon into an object
     const pointData = {
         datetime: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
         lat: locLat,
         lng: locLng
     }
 
+    // If a point is logged then write it to the database
     if (pointData.lat && pointData.lng) {
         SheetDB.write('https://sheetdb.io/api/v1/m6npscfti1l0q', { sheet: 'parklets', data: pointData }).then(function (result) {
             console.log(result);
         }, function (error) {
             console.log(error);
         });
+
+        // Disable the button once people have submitted
+        document.getElementById("btn-submit").innerText = "Submitted!"
+        document.getElementById("btn-submit").setAttribute("disabled", true)
+        document.getElementById("btn-submit").setAttribute("onclick", null)
     }
 }
+
+// This runs once the page has loaded and grabs the data
+$(document).ready(function () {
+    $.ajax({
+        type: "GET",
+        //YOUR TURN: Replace with csv export link
+        url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSKSfj06zMOpj_5pAskl6l7D_tpmaqsr9Ewp2EBvxpjs0Sbol149VbUotOMErUHbGo5BBayLt2Dx64n/pub?gid=0&single=true&output=csv',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON(csvData); }
+    });
+});
+
+// This runs once the data is loaded and imports all the previously-saved parklets
+function makeGeoJSON(csvData) {
+
+    csv2geojson.csv2geojson(csvData, {
+        latfield: 'lat',
+        lonfield: 'lng',
+        delimiter: ','
+    }, function (err, data) {
+        if (err) throw err;
+
+        console.log(data);
+
+        map.addLayer({
+            'id': 'csvData',
+            'type': 'circle',
+            'source': {
+                'type': 'geojson',
+                'data': data
+            },
+            'paint': {
+                'circle-radius': 10,
+                'circle-color': '#64C4DE',
+                'circle-stroke-color': 'white',
+                'circle-stroke-width': 2,
+                'circle-opacity': 0.5
+            }
+        })
+    });
+};
