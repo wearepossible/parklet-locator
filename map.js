@@ -75,7 +75,7 @@ const draw = new MapboxDraw(
                     ['==', 'meta', 'feature']],
                 'paint': {
                     'circle-radius': 10,
-                    'circle-color': '#32B08C',
+                    'circle-color': '#64C4DE',
                     'circle-stroke-color': 'white',
                     'circle-stroke-width': 2,
                     'circle-opacity': 0.5
