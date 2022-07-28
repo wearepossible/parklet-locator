@@ -30,27 +30,23 @@
         <a id="null" href="http://wearepossible.org" target="_blank"><img id='logo' alt="Possible logo"
                 src="logo.png"></a>
         <h1>Parklet Plotter</h1>
-        <div id="intro">
+        <div id="intro" class="paras">
             <p><strong>Use this map to find a spot you think would be ideal for a new parklet</strong> - a car parking
                 space that could be transformed into something for people to enjoy.</p>
-            <p>We’ve created it to help people learn more about the areas they live in - from which communities have the
-                least access to green
-                space to which areas experience high levels of social deprivation. Where could parklets be
-                installed to best help improve access to green space and give streets back to people and nature?</p>
-            <p>The buttons below allow you to jump to specific cities, as well as switch between seeing public green
-                space, access to public and private green space, deprivation levels, and car ownership per household.
-            </p>
-            <p>Picked the perfect location? Great - now, design a parklet to put there. <a
-                    href="https://www.wearepossible.org/parklets#designer" target="_blank">Check out our ‘design your
-                    own parklet’ tool.</a></p>
+            <p>Where could a parklet be installed to improve access to green space and give streets back to
+                people and nature? Click on the map to choose a location.</p>
         </div>
     </div>
     <div id='main'>
         <div id='background'>
+            <div id='map'>
+                <script src=map.js></script>
+            </div>
+            <div id='tip'>
+                <p>Tip: If you can't see any data then zoom in.</p>
+                <button class="btn" id='btn-submit' onclick='submit()'>Submit Your Parklet To Our Database</button>
+            </div>
             <div id='buttons'>
-                <div id='loadinggif'>
-                    <img id='nearest-loading' src="loader.gif">
-                </div>
                 <div id='locationbuttons'>
                     Zoom to:
                     <br />
@@ -85,15 +81,21 @@
                 <img class='fade-in-image' id='carsperperson' alt="key showing cars per person colours"
                     src="carsperperson.svg">
             </div>
-            <div id='map'>
-                <script src=map.js></script>
-            </div>
-            <div id='tip'>
-                <p>Tip: If you can't see any data then zoom in.</p>
-                <button class="btn" id='btn-submit' onclick='submit()'>Submit Your Parklet To Our Database</button>
-            </div>
         </div>
-        <div id='methodology'>
+        <div id="explanation" class="paras">
+            <p>We’ve created this map to help people learn more about the areas they live in - from which communities
+                have the least access to green space to which areas experience high levels of social deprivation.</p>
+            <p>The controls below the map allow you to jump to specific cities, as well as switch between seeing public
+                green space, access to public and private green space, deprivation levels, and car ownership per
+                household.
+            </p>
+            <p>Picked the perfect location? Great - submit it to our database, <a
+                    href="https://action.wearepossible.org/page/103508/action/1?locale=en-GB" target="_blank">write to
+                    your council</a>
+                to show your support for parklets, and then <a href="https://www.wearepossible.org/parklets#designer"
+                    target="_blank">design a parklet to put there</a>.</p>
+        </div>
+        <div id='methodology' class="paras">
             <h3>Sources and Methodology</h3>
             <p><strong>Public Green Space</strong> data comes from the <a
                     href="https://www.ordnancesurvey.co.uk/business-government/products/open-map-greenspace"
