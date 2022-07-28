@@ -21,16 +21,10 @@ const gotoBristol = () => map.flyTo({ center: [-2.59, 51.45], zoom: 11 });
 // Create a function that executes when the button is clicked
 const locApprove = () => {
 
-    // Display a loading gif
-    document.getElementById("nearest-loading").style.display = 'inline';
-
     // Get the user's actual latitude and longitude
     navigator.geolocation.getCurrentPosition(function (position, html5Error) {
         const userLat = position.coords.latitude;
         const userLon = position.coords.longitude;
-
-        // Hide the loading gif again once loaded
-        document.getElementById("nearest-loading").style.display = 'none';
 
         // Move the world map to your location
         map.flyTo({ center: [userLon, userLat], zoom: 15 });
