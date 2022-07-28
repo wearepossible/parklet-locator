@@ -45,16 +45,19 @@
             <div id='tip'>
                 <p>Tip: If you can't see any data then zoom in.</p>
             </div>
+            <div id='legend'>
+                Legend:
+                <br />
+                <img class='fade-in-image' id='public_greenspace' alt="key showing public greenspace colour"
+                    src="public_greenspace.svg" style='display: block'>
+                <img class='fade-in-image' id='private_greenspace' alt="key showing access to green space colours"
+                    src="private_greenspace.svg">
+                <img class='fade-in-image' id='imd' alt="key showing index of multiple deprivation colours"
+                    src="imd.svg">
+                <img class='fade-in-image' id='carsperperson' alt="key showing cars per person colours"
+                    src="carsperperson.svg">
+            </div>
             <div id='buttons'>
-                <div id='locationbuttons'>
-                    Zoom to:
-                    <br />
-                    <button class="btn" onclick="gotoLondon()">London</button>
-                    <button class="btn" onclick="gotoBirmingham()">Birmingham</button>
-                    <button class="btn" onclick="gotoLeeds()">Leeds</button>
-                    <button class="btn" onclick="gotoBristol()">Bristol</button>
-                    <button class="btn" id='nearest-button' onclick="locApprove()">My Location</span></button>
-                </div>
                 <div id='layerbuttons'>
                     Select a layer:
                     <br />
@@ -67,18 +70,15 @@
                     <button class="btn" id='btn-carsperperson' onclick='layerChange("carsperperson")'>Cars per
                         Household</button>
                 </div>
-            </div>
-            <div id='legend'>
-                Legend:
-                <br />
-                <img class='fade-in-image' id='public_greenspace' alt="key showing public greenspace colour"
-                    src="public_greenspace.svg" style='display: block'>
-                <img class='fade-in-image' id='private_greenspace' alt="key showing access to green space colours"
-                    src="private_greenspace.svg">
-                <img class='fade-in-image' id='imd' alt="key showing index of multiple deprivation colours"
-                    src="imd.svg">
-                <img class='fade-in-image' id='carsperperson' alt="key showing cars per person colours"
-                    src="carsperperson.svg">
+                <div id='locationbuttons'>
+                    Zoom to:
+                    <br />
+                    <button class="btn" onclick="gotoLondon()">London</button>
+                    <button class="btn" onclick="gotoBirmingham()">Birmingham</button>
+                    <button class="btn" onclick="gotoLeeds()">Leeds</button>
+                    <button class="btn" onclick="gotoBristol()">Bristol</button>
+                    <button class="btn" id='nearest-button' onclick="locApprove()">My Location</span></button>
+                </div>
             </div>
         </div>
         <div id="explanation" class="paras">
