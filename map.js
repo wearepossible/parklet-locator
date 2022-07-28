@@ -1,6 +1,9 @@
 // Access token
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2VhcmVwb3NzaWJsZSIsImEiOiJja3FrcXk1bnMwZXduMnBuc2kwMnY5eDBwIn0.9mpiXSSZEwSlwSeKs6XyNw';
 
+// LatLn regex
+const llRegEx = /^-*\d*\d\.\d\d\d\d\d,-*\d*\d\.\d\d\d\d\d$/
+
 // Set up the map
 var map = new mapboxgl.Map({
     container: 'map', // container ID
@@ -81,12 +84,47 @@ map.addControl(draw);
 // Create variables to hold the details of the location
 let locID, loc, locLat, locLng;
 
+// Check if there's a hash in the URL
+if (window.location.hash) {
+    // Fragment exists
+    const hash = window.location.hash.substring(1) // Chop off the #
+    console.log(hash)
+
+    if (llRegEx.test(hash)) {
+
+        // Assign to locLat and locLng
+        locLat = hash.split(",")[0]
+        locLng = hash.split(",")[1]
+
+        // Define a new point
+        loc = draw.add({
+            id: locID,
+            type: 'Feature',
+            properties: {},
+            geometry: { type: 'Point', coordinates: [locLng, locLat] }
+        });
+
+        // Save its ID
+        locID = loc[0];
+
+        // Zoom to location
+        map.flyTo({ center: [locLng, locLat], zoom: 16 });
+
+    } else {
+        console.log("Hash is not a valid lat/lon pair")
+    }
+
+} else {
+    // Fragment doesn't exist
+    console.log("no hash")
+}
+
 // Click to place a parklet
 map.on('click', function (e) {
 
     // Save location of click
-    locLat = e.lngLat.lat;
-    locLng = e.lngLat.lng;
+    locLat = e.lngLat.lat.toFixed(5);
+    locLng = e.lngLat.lng.toFixed(5);
 
     // Get rid of all previously drawn points
     draw.deleteAll();
