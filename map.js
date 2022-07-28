@@ -1,3 +1,6 @@
+// Set this to false if you want parklets to be saved in the database
+const dev = true;
+
 // Access token
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2VhcmVwb3NzaWJsZSIsImEiOiJja3FrcXk1bnMwZXduMnBuc2kwMnY5eDBwIn0.9mpiXSSZEwSlwSeKs6XyNw';
 
@@ -165,12 +168,23 @@ function submit() {
 
     // If a point is logged then write it to the database
     if (pointData.lat && pointData.lng) {
-        SheetDB.write('https://sheetdb.io/api/v1/m6npscfti1l0q', { sheet: 'parklets', data: pointData }).then(function (result) {
-            console.log(result);
-        }, function (error) {
-            console.log(error);
-        });
 
+        if (!dev) { // Don't submit to database if dev mode is on
+            SheetDB.write('https://sheetdb.io/api/v1/m6npscfti1l0q', { sheet: 'parklets', data: pointData }).then(function (result) {
+                console.log(result);
+            }, function (error) {
+                console.log(error);
+            });
+        }
+
+        // Figure out the url
+        url = urlprefix.concat("#", locLat, ",", locLng)
+
+        // Update the map popup
+        popup.setHTML(endHTML)
+
+        // Put the url in the urlbox
+        document.getElementById("urlboxmap").value = url
     }
 }
 
