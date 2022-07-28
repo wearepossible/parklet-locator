@@ -55,6 +55,55 @@ a {
     width: 90%;
 }
 
+#map {
+    width: 90%;
+    max-width: 850px;
+    height: 600px;
+    margin: 10px auto 10px auto;
+    outline: 2px solid #32b08c;
+}
+
+.mapboxgl-popup {
+    transform: translateY(-10px);
+    font-family: 'Poppins', sans-serif;
+}
+
+.mapboxgl-popup-content {
+    text-align: center;
+    font-size: 105%;
+}
+
+.mapboxgl-popup-content p {
+    text-align: center;
+    margin: 8px;
+}
+
+.mapboxgl-popup #urlboxmap {
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 80%;
+}
+
+.mapboxgl-popup span {
+    color: #BF0978;
+    cursor: pointer;
+    padding-left: 8px;
+    font-size: 80%;
+}
+
+#tip {
+    width: 90%;
+    max-width: 850px;
+    margin: 0px auto 0px auto;
+    padding-bottom: 1px;
+}
+
+#tip p {
+    text-align: center;
+    font-size: 80%;
+}
+
 #buttons * {
     margin: 5px auto;
     text-align: center;
@@ -73,27 +122,6 @@ a {
     height: auto;
     display: none;
     padding: 10px 0px;
-}
-
-#map {
-    width: 90%;
-    max-width: 850px;
-    height: 600px;
-    margin: 10px auto 10px auto;
-    outline: 2px solid #32b08c;
-}
-
-#tip {
-    width: 90%;
-    max-width: 850px;
-    margin: 0px auto 0px auto;
-    padding-bottom: 1px;
-    text-align: center;
-}
-
-#tip p {
-    text-align: center;
-    font-size: 80%;
 }
 
 #footer {
@@ -149,7 +177,7 @@ a {
 }
 
 #btn-submit {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 @keyframes fadeIn {

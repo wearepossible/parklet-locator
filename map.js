@@ -1,8 +1,14 @@
 // Access token
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2VhcmVwb3NzaWJsZSIsImEiOiJja3FrcXk1bnMwZXduMnBuc2kwMnY5eDBwIn0.9mpiXSSZEwSlwSeKs6XyNw';
 
-// LatLn regex
-const llRegEx = /^-*\d*\d\.\d\d\d\d\d,-*\d*\d\.\d\d\d\d\d$/
+// Lat Lon hash regex
+const llRegEx = /^-*\d*\d\.\d\d\d\d\d,-*\d*\d\.\d\d\d\d\d$/;
+const urlprefix = window.location.href;
+
+// HTML for map popup
+const startHTML = "<p>Is this the perfect place for a parklet?</p><button class='btn' id='btn-submit' onclick='submit()'>Submit to our database</button>"
+const endHTML = "<p>Thanks! Here's a link to your parklet:</p><input type='text' id='urlboxmap'> <span id='copybutton' onmousedown='copyURL()' onmouseup='unbold()'>copy</span><p>Now <a href='https://action.wearepossible.org/page/103508/action/1?locale=en-GB' target='_blank'>write to your councillor</a> to show your support for parklets.</p>"
+let popup
 
 // Set up the map
 var map = new mapboxgl.Map({
@@ -86,10 +92,11 @@ let locID, loc, locLat, locLng;
 
 // Check if there's a hash in the URL
 if (window.location.hash) {
-    // Fragment exists
-    const hash = window.location.hash.substring(1) // Chop off the #
-    console.log(hash)
 
+    // Hash exists
+    const hash = window.location.hash.substring(1) // Chop off the #
+
+    // Check that it matches the right format for lat/lon
     if (llRegEx.test(hash)) {
 
         // Assign to locLat and locLng
@@ -111,12 +118,9 @@ if (window.location.hash) {
         map.flyTo({ center: [locLng, locLat], zoom: 16 });
 
     } else {
+        // log an error
         console.log("Hash is not a valid lat/lon pair")
     }
-
-} else {
-    // Fragment doesn't exist
-    console.log("no hash")
 }
 
 // Click to place a parklet
@@ -140,6 +144,11 @@ map.on('click', function (e) {
     // Save its ID
     locID = loc[0];
 
+    popup = new mapboxgl.Popup({ offset: 20, maxWidth: '280px' })
+        .setLngLat([locLng, locLat])
+        .setHTML(startHTML)
+        .addTo(map);
+
     // Zoom to location
     map.flyTo({ center: [locLng, locLat], zoom: 16 });
 });
@@ -152,7 +161,7 @@ function submit() {
         datetime: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
         lat: locLat,
         lng: locLng
-    }
+    };
 
     // If a point is logged then write it to the database
     if (pointData.lat && pointData.lng) {
@@ -162,18 +171,24 @@ function submit() {
             console.log(error);
         });
 
-        // Disable the button once people have submitted
-        document.getElementById("btn-submit").innerText = "Submitted!"
-        document.getElementById("btn-submit").setAttribute("disabled", true)
-        document.getElementById("btn-submit").setAttribute("onclick", null)
     }
 }
 
-// This runs once the page has loaded and grabs the data
+// This runs when the copy button is clicked (mousedown)
+function copyURL() {
+    navigator.clipboard.writeText(document.getElementById("urlboxmap").value);
+    document.getElementById("copybutton").style.fontWeight = 800;
+}
+
+// This runs when the copy button is unclicked (mouseup)
+function unbold() {
+    document.getElementById("copybutton").style.fontWeight = 400;
+}
+
+// This runs once the page has loaded and grabs the data from the gsheet to render
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        //YOUR TURN: Replace with csv export link
         url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSKSfj06zMOpj_5pAskl6l7D_tpmaqsr9Ewp2EBvxpjs0Sbol149VbUotOMErUHbGo5BBayLt2Dx64n/pub?gid=0&single=true&output=csv',
         dataType: "text",
         success: function (csvData) { makeGeoJSON(csvData); }
