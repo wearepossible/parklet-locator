@@ -10,7 +10,7 @@ const urlprefix = window.location.href;
 
 // HTML for map popup
 const startHTML = "<p>Is this the perfect place for a parklet?</p><button class='btn' id='btn-submit' onclick='submit()'>Submit to our database</button>"
-const endHTML = `<p>Thanks! Here's a link to your parklet:</p><input type='text' id='urlboxmap'> <span id='copybutton' onmousedown='copyURL()' onmouseup='unbold()'>copy</span><p>Now <a href='https://action.wearepossible.org/page/110835/action/1?supporter.questions.1356294=' target='_blank'>write to your councillor</a> to show your support for parklets.</p>`
+let endHTML = `<p>Thanks! Here's a link to your parklet:</p><input type='text' id='urlboxmap'> <span id='copybutton' onmousedown='copyURL()' onmouseup='unbold()'>copy</span><p>Now <a href='https://action.wearepossible.org/page/110835/action/1?supporter.questions.1356294=' target='_blank'>write to your councillor</a> to show your support for parklets.</p>`
 let popup
 
 // Set up the map
