@@ -21,7 +21,15 @@ var map = new mapboxgl.Map({
     zoom: 10 // starting zoom
 });
 
-// Add navigation controls on map
+// Add the search control to the map.
+map.addControl(
+    new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+    })
+);
+
+// Add navigation controls
 map.addControl(new mapboxgl.NavigationControl());
 
 // Fly to different cities
