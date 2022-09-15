@@ -1,5 +1,5 @@
 // Set this to false if you want parklets to be saved in the database
-const dev = true;
+const dev = false;
 
 // Access token
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2VhcmVwb3NzaWJsZSIsImEiOiJja3FrcXk1bnMwZXduMnBuc2kwMnY5eDBwIn0.9mpiXSSZEwSlwSeKs6XyNw';
