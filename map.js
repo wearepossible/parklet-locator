@@ -122,7 +122,7 @@ map.on('click', function (e) {
         .setLngLat([locLng, locLat])
         .addTo(map);
 
-    popup = new mapboxgl.Popup({ offset: 40, maxWidth: '280px' })
+    popup = new mapboxgl.Popup({ offset: 20, maxWidth: '280px' })
         .setLngLat([locLng, locLat])
         .setHTML(startHTML)
         .addTo(map);
