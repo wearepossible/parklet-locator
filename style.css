@@ -182,6 +182,14 @@ a {
     margin-bottom: 0px;
 }
 
+.marker {
+    background-image: url('marker.svg');
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;

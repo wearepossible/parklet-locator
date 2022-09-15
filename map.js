@@ -12,6 +12,9 @@ const urlprefix = window.location.href;
 const startHTML = "<p>Is this the perfect place for a parklet?</p><button class='btn' id='btn-submit' onclick='submit()'>Submit to our database</button>"
 let endHTML = `<p>Thanks! Here's a link to your parklet:</p><input type='text' id='urlboxmap'> <span id='copybutton' onmousedown='copyURL()' onmouseup='unbold()'>copy</span><p>Now <a href='https://action.wearepossible.org/page/110835/action/1?supporter.questions.1356294=' target='_blank'>write to your councillor</a> to show your support for parklets.</p>`
 let popup
+let marker
+const el = document.createElement('div');
+el.className = 'marker';
 
 // Set up the map
 var map = new mapboxgl.Map({
@@ -75,29 +78,6 @@ const layerChange = (chosenLayer) => {
 
 }
 
-// Setup Mapbox Draw
-const draw = new MapboxDraw(
-    {
-        defaultMode: "draw_point",
-        displayControlsDefault: false,
-        styles: [
-            {
-                'id': 'highlight-points',
-                'type': 'circle',
-                'filter': ['all',
-                    ['==', '$type', 'Point'],
-                    ['==', 'meta', 'feature']],
-                'paint': {
-                    'circle-radius': 10,
-                    'circle-color': '#64C4DE',
-                    'circle-stroke-color': 'white',
-                    'circle-stroke-width': 2,
-                    'circle-opacity': 0.5
-                }
-            }]
-    });
-map.addControl(draw);
-
 // Create variables to hold the details of the location
 let locID, loc, locLat, locLng;
 
@@ -114,16 +94,11 @@ if (window.location.hash) {
         locLat = hash.split(",")[0]
         locLng = hash.split(",")[1]
 
-        // Define a new point
-        loc = draw.add({
-            id: locID,
-            type: 'Feature',
-            properties: {},
-            geometry: { type: 'Point', coordinates: [locLng, locLat] }
-        });
+        if (marker) marker.remove();
 
-        // Save its ID
-        locID = loc[0];
+        marker = new mapboxgl.Marker(el)
+            .setLngLat([locLng, locLat])
+            .addTo(map);
 
         // Zoom to location
         map.flyTo({ center: [locLng, locLat], zoom: 16 });
@@ -141,21 +116,13 @@ map.on('click', function (e) {
     locLat = e.lngLat.lat.toFixed(5);
     locLng = e.lngLat.lng.toFixed(5);
 
-    // Get rid of all previously drawn points
-    draw.deleteAll();
+    if (marker) marker.remove();
 
-    // Define a new point
-    loc = draw.add({
-        id: locID,
-        type: 'Feature',
-        properties: {},
-        geometry: { type: 'Point', coordinates: [locLng, locLat] }
-    });
+    marker = new mapboxgl.Marker(el)
+        .setLngLat([locLng, locLat])
+        .addTo(map);
 
-    // Save its ID
-    locID = loc[0];
-
-    popup = new mapboxgl.Popup({ offset: 20, maxWidth: '280px' })
+    popup = new mapboxgl.Popup({ offset: 40, maxWidth: '280px' })
         .setLngLat([locLng, locLat])
         .setHTML(startHTML)
         .addTo(map);
