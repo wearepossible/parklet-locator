@@ -1,6 +1,6 @@
 div {
     box-sizing: border-box;
-    }
+}
 
 body {
     background-color: #fff;
@@ -20,6 +20,7 @@ h1 {
 
 h3 {
     font-size: 120%;
+    margin-top: 48px;
 }
 
 p {
@@ -33,12 +34,13 @@ a {
 
 #background {
     background-color: #EEF6F3;
+    padding: 20px 0
 }
 
 #header {
-    margin: 30px auto 40px auto;
+    margin: 32px auto 16px auto;
     text-align: center;
-    max-width: 600px;
+    max-width: 800px;
 }
 
 #logo {
@@ -46,29 +48,66 @@ a {
     height: auto;
 }
 
-#intro {
-    margin: 30px auto 10px auto;
+.paras {
+    margin: 32px auto;
     text-align: center;
-    max-width: 600px;
+    max-width: 65ch;
     width: 90%;
+}
+
+#map {
+    width: 90%;
+    max-width: 850px;
+    height: 600px;
+    margin: 10px auto 10px auto;
+    outline: 2px solid #32b08c;
+}
+
+.mapboxgl-popup {
+    transform: translateY(-10px);
+    font-family: 'Poppins', sans-serif;
+}
+
+.mapboxgl-popup-content {
+    text-align: center;
+    font-size: 105%;
+}
+
+.mapboxgl-popup-content p {
+    text-align: center;
+    margin: 8px;
+}
+
+.mapboxgl-popup #urlboxmap {
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 80%;
+}
+
+.mapboxgl-popup span {
+    color: #BF0978;
+    cursor: pointer;
+    padding-left: 8px;
+    font-size: 80%;
+}
+
+#tip {
+    width: 90%;
+    max-width: 850px;
+    margin: 0px auto 0px auto;
+    padding-bottom: 1px;
+}
+
+#tip p {
+    text-align: center;
+    font-size: 80%;
+    margin-bottom: 0;
 }
 
 #buttons * {
     margin: 5px auto;
     text-align: center;
-}
-
-#loadinggif {
-    width: 100%;
-    height: 16px;
-    margin: 20px auto;
-}
-
-#nearest-loading {
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    display: none;
 }
 
 #legend {
@@ -83,34 +122,7 @@ a {
     width: 100%;
     height: auto;
     display: none;
-    padding: 10px 0px;
-}
-
-#map {
-    width: 90%;
-    max-width: 850px;
-    height: 600px;
-    margin: 10px auto 2px auto;
-    outline: 2px solid #32b08c;
-}
-
-#tip {
-    width: 90%;
-    max-width: 850px;
-    margin: 0px auto 20px auto;
-    padding-bottom: 1px;
-}
-
-#tip p {
-    text-align: center;
-    font-size: 80%;
-}
-
-#methodology {
-    margin: 60px auto 60px auto;
-    text-align: center;
-    max-width: 600px;
-    width: 90%;
+    padding-top: 8px;
 }
 
 #footer {
@@ -136,7 +148,7 @@ a {
     color: #ffffff;
     font-weight: 600;
     text-decoration: none;
-    margin: 0 10px; 
+    margin: 0 10px;
 }
 
 .fade-in-image {
@@ -148,21 +160,34 @@ a {
 }
 
 .btn {
-  color: #ffffff;
-  background: #BF0978;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  font-size: 100%;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    background: #BF0978;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    font-size: 100%;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
 }
 
 #btn-public_greenspace {
-  color: #BF0978;
-  background: #ffffff;
-  text-decoration: none;
-  outline: 2px solid #BF0978;
+    color: #BF0978;
+    background: #ffffff;
+    text-decoration: none;
+    outline: 2px solid #BF0978;
+}
+
+#btn-submit {
+    margin-bottom: 0px;
+}
+
+.marker {
+    background-image: url('marker.svg');
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
 }
 
 @keyframes fadeIn {
@@ -215,17 +240,17 @@ a {
     }
 }
 
-ul.share-buttons{
+ul.share-buttons {
     list-style: none;
     padding: 0;
     text-align: center;
-  }
-  
-  ul.share-buttons li{
+}
+
+ul.share-buttons li {
     display: inline;
-  }
-  
-  ul.share-buttons .sr-only{
+}
+
+ul.share-buttons .sr-only {
     position: absolute;
     clip: rect(1px 1px 1px 1px);
     clip: rect(1px, 1px, 1px, 1px);
@@ -234,4 +259,4 @@ ul.share-buttons{
     height: 1px;
     width: 1px;
     overflow: hidden;
-  }
+}
