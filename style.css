@@ -37,6 +37,27 @@ a {
     padding: 20px 0
 }
 
+#banner {
+    background-color: #32b08c;
+}
+
+#banner p {
+    color: #EEF6F3;
+    text-align: center;
+    margin: 0;
+    padding: 8px;
+    font-size: 120%;
+}
+
+#banner a {
+    color: #EEF6F3;
+}
+
+#banner #bannertext:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 #header {
     margin: 32px auto 16px auto;
     text-align: center;
@@ -184,6 +205,14 @@ a {
 
 .marker {
     background-image: url('marker.svg');
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.marker-permanent {
+    background-image: url('marker-permanent.svg');
     background-size: cover;
     width: 25px;
     height: 25px;

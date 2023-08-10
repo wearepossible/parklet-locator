@@ -41,6 +41,22 @@ const gotoBirmingham = () => map.flyTo({ center: [-1.90, 52.48], zoom: 11 });
 const gotoLeeds = () => map.flyTo({ center: [-1.55, 53.80], zoom: 11 });
 const gotoBristol = () => map.flyTo({ center: [-2.59, 51.45], zoom: 11 });
 
+// Collection of permanent parklets
+const permanent = {
+    'type': 'FeatureCollection',
+    'features': [
+        {
+            'type': 'Feature',
+            'properties': {
+                'description': "Our Permanent Parklet",
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [-0.081846, 51.54323]
+            }
+        }]
+}
+
 // Create a function that executes when the button is clicked
 const locApprove = () => {
 
@@ -212,5 +228,43 @@ function makeGeoJSON(csvData) {
                 'circle-opacity': 0.5
             }
         })
+    });
+
+    map.addSource('permanent', {
+        'type': 'geojson',
+        'data': permanent
+    });
+
+    map.addLayer({
+        'id': 'perma-circles',
+        'type': 'symbol',
+        'source': 'permanent',
+        'layout': {
+            'text-field': ['get', 'description'],
+            'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+            'text-radial-offset': 0.7,
+            'text-justify': 'auto',
+            'text-font': ['Poppins Bold'],
+            'text-size': 14
+        },
+        'paint': {
+            'text-color': '#BF0978',
+            'text-halo-color': '#ffffff',
+            'text-halo-width': 3,
+            'text-halo-blur': 5
+        }
+    });
+
+    map.addLayer({
+        'id': 'perma-labels',
+        'type': 'circle',
+        'source': 'permanent',
+        'paint': {
+            'circle-radius': 5,
+            'circle-color': '#BF0978',
+            'circle-stroke-color': 'white',
+            'circle-stroke-width': 2,
+            'circle-opacity': 1
+        }
     });
 };
